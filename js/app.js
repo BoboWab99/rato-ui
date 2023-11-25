@@ -1,8 +1,15 @@
 // Run
-enableTooltips()
-playWelcomeGif()
-addNavTooltips()
-toggleNavShowOnMobile()
+// enableTooltips()
+// playWelcomeGif()
+// addNavTooltips()
+// toggleNavShowOnMobile()
+
+window.addEventListener("DOMContentLoaded", () => {
+    playWelcomeGif()
+    toggleNavShowOnMobile()
+    enableTooltips()
+    addNavTooltips()
+})
 
 window.addEventListener("resize", () => {
     addNavTooltips()
