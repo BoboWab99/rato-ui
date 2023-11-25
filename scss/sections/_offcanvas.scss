@@ -1,0 +1,40 @@
+// offcanvas styles
+
+.offcanvas {
+    $item-padding-x: 1rem;
+
+    max-width: calc(100% - 5vw);
+
+    .ms-reset {
+        margin-inline-start: -1.5rem;
+        padding-inline-start: 1.5rem;
+    }
+
+    .me-reset {
+        margin-inline-end: -1.5rem;
+        padding-inline-end: 1.5rem;
+    }
+
+    .ms-reset li:not(.menu-label) {
+        margin-inline-start: -1 * $item-padding-x;
+    }
+
+    .me-reset li:not(.menu-label) {
+        margin-inline-end: -1 * $item-padding-x;
+    }
+
+    .menu-label {
+        letter-spacing: 1px;
+        margin-block-end: .25rem;
+    }
+
+    .ms-reset .dropdown-item,
+    .me-reset .dropdown-item {
+        --bs-dropdown-item-padding-x: #{$item-padding-x};
+
+        .icon {
+            flex-basis: 2rem;
+            font-size: 1.1rem;
+        }
+    }
+}

@@ -1,0 +1,204 @@
+// common styles/classes
+@use "../vendors/bootstrap" as bs;
+@use "../abstracts/mixins" as mx;
+@use "../abstracts/variables" as var;
+
+.minh-100vh {
+    min-height: 100vh !important; // backup
+    min-height: 100dvh !important;
+}
+
+.maxh-100vh {
+    max-height: 100vh !important; // backup
+    max-height: 100dvh !important;
+}
+
+.h-100vh {
+    height: 100vh !important; // backup
+    height: 100dvh !important;
+}
+
+.h-inherit {
+    min-height: inherit;
+    max-height: inherit;
+    height: inherit;
+}
+
+.list-reset {
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    list-style-type: none;
+}
+
+.border-transparent {
+   border-color: rgba(#000, 0);
+}
+
+.overflow-ellipsis {
+    @include mx.text-overflow-ellipsis();
+}
+
+.square {
+    @include mx.square(var(--size, 45px));
+}
+
+.circle {
+    @include mx.circle(var(--size, 45px));
+}
+
+.square-profile {
+    @include mx.square(40px, .6rem);
+}
+
+// generic hover styles
+.hover {
+    &-underline:hover {
+        --_main: rgba(var(--bs-link-color-rgb), .3);
+        $alt: bs.tint-color(bs.$primary, 60%);
+        text-decoration: 2px underline var(--_main, $alt) !important;
+    }
+}
+
+// empty element placeholders
+.empty {
+    &-hidden:empty {
+        display: none !important;
+    }
+
+    &-dashed:empty::after {
+        content: "---";
+    }
+
+    &-not-set:empty::after {
+        content: "(Not set)";
+    }
+}
+
+// small font sizes
+.fs- {
+    &sm {
+        font-size: .875 * bs.$font-size-base !important;
+    }
+
+    &xsm {
+        font-size: .8125 * bs.$font-size-base !important;
+    }
+
+    &xxsm {
+        font-size: .75 * bs.$font-size-base !important;
+    }
+}
+
+.shadow-primary {
+    box-shadow: 0 0 0 1px rgb(245 243 243),
+        3px 4px #e5d2e3 !important;
+}
+
+.shadow--sm {
+   box-shadow: var.$ca-shadow-sm;
+   z-index: 1;
+}
+
+.shadow--sm-up {
+   box-shadow: var.$ca-shadow-sm-up;
+   z-index: 1;
+}
+
+.d-pseudo-none::before,
+.d-before-none::before {
+    display: none !important;
+}
+
+.d-pseudo-none::after,
+.d-after-none::after {
+    display: none !important;
+
+}
+
+// hide all select options except the selected option
+.disable-not-selected option:not(:checked) {
+    display: none !important;
+}
+
+// pointer events
+@each $value in all, none {
+    .pointer-events-#{$value} {
+        pointer-events: $value !important;
+    }
+}
+
+// number-based font weights
+@each $value in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
+    .fw-#{$value} {
+        font-weight: $value !important;
+    }
+}
+
+// dropdown item icons
+.dropdown-item {
+    .icon {
+        --bs-dropdown-link-color: #{bs.$primary};
+        color: var(--bs-dropdown-link-color);
+    }
+
+    &.active .icon,
+    &:active .icon {
+        color: var(--bs-dropdown-link-active-color);
+    }
+
+    &.dropdown-item-danger {
+        --bs-dropdown-link-color: var(--bs-danger);
+        --bs-dropdown-link-hover-color: var(--bs-danger);
+        --bs-dropdown-link-active-bg: var(--bs-danger);
+
+        .icon {
+            --bs-dropdown-link-color: #{bs.$danger};
+        }
+    }
+
+    &.disabled .icon,
+    &:disabled .icon {
+        opacity: .6;
+    }
+}
+
+
+// for form elements mostly
+.disabled {
+    background-color: var(--bs-secondary-bg) !important;
+    pointer-events: none !important;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.form-field {
+    &:not(.form-check) {
+        display: grid;
+        gap: .25rem;
+    }
+
+    &.is-required label::after {
+        content: "*";
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1;
+        color: bs.$red;
+        box-sizing: content-box;
+        position: absolute;
+        padding-left: 3px;
+    }
+}
+
+// labels
+:not(.form-check)>label,
+:not(.form-check)>.label {
+    font-size: .875rem;
+    font-weight: 500;
+    color: bs.$primary;
+    position: relative;
+}
+
+// ojs router links
+// [onclick*="route.to"] {
+//    cursor: pointer;
+// }

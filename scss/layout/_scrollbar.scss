@@ -1,0 +1,67 @@
+// custom scrollbar styles
+// use of css variables instead of scss's for ease of customization
+
+@use "../vendors/bootstrap" as bs;
+
+.scrollbar {
+    --scrollbar-size: 16px;
+    --scrollbar-spacer: 4px;
+    --track-margin: 16px;
+
+    &-sm {
+        --scrollbar-size: 9px;
+        --scrollbar-spacer: 2px;
+        --track-margin: 7px;
+    }
+
+    &,
+    &-sm {
+        --scrollbar-bg: #fff;
+        --scrollbar-bar-bg: rgb(211, 211, 212);
+    }
+
+    // Firefox
+    scrollbar-width: thin;
+    scroll-margin-top: var(--track-margin);
+    scroll-margin-bottom: var(--track-margin);
+    scrollbar-color: var(--scrollbar-bar-bg) var(--scrollbar-bg);
+
+    // Chrome, Edge, and Safari
+    &::-webkit-scrollbar,
+    &-sm::-webkit-scrollbar {
+        width: var(--scrollbar-size);
+        height: var(--scrollbar-size);
+    }
+
+    &::-webkit-scrollbar-track,
+    &-sm::-webkit-scrollbar-track {
+        margin: var(--track-margin);
+        background: var(--scrollbar-bg);
+    }
+
+    &.track-margin-0::-webkit-scrollbar-track,
+    &-sm.track-margin-0::-webkit-scrollbar-track {
+        margin: 1px;
+    }
+
+    &::-webkit-scrollbar-thumb,
+    &-sm::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-bar-bg);
+        border: var(--scrollbar-spacer) solid var(--scrollbar-bg);
+        border-radius: var(--scrollbar-size);
+    }
+}
+
+[class*=container] {
+    @include bs.media-breakpoint-down(xl) {
+        .px-container-reset {
+            margin-inline: calc(-0.5 * var(--bs-gutter-x));
+            padding-inline: calc(0.5 * var(--bs-gutter-x));
+
+            &.scrollbar,
+            &.scrollbar-sm {
+                --track-margin: calc(1px + 0.5 * var(--bs-gutter-x))
+            }
+        }
+    }
+}

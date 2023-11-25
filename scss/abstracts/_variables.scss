@@ -1,0 +1,27 @@
+// global variables
+
+// prefix = ca (for carata)
+
+@use "functions" as fn;
+
+$ca-color-primary: #8f3985;
+$ca-rgb-primary: fn.rgb($ca-color-primary);
+$ca-bottom-nav-height: 60px;
+$ca-primary-button-offset: 14px;    // bottom nav primary button
+// @debug $ca-rgb-primary;
+
+$ca-border-radius: .75rem;
+$ca-body-gradient: linear-gradient(0deg, #e5dfd5, #fff);
+$ca-card-shadow-sm: -1px 2px 6px -3px rgb(96 81 50 / .25);
+
+$main-nav-width-sm: 80px;
+$main-nav-width-lg: 240px;
+$main-nav-width-xl: 300px;
+$nav-item-size-sm: 50px;
+
+// shadows
+$ca-shadow-sm: 0 0 2px rgba(0, 0, 0, .15),
+    0 4px 8px rgba(66, 52, 159, .15) !important;
+
+$ca-shadow-sm-up: 0 0 2px rgba(0, 0, 0, .15),
+    0 -4px 8px rgba(66, 52, 159, .15) !important;

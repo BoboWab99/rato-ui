@@ -1,0 +1,15 @@
+// header styles
+
+@use "../vendors/bootstrap" as bs;
+
+.header-primary {
+
+    @include bs.media-breakpoint-up(lg) {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgb(80 38 38 / .25);
+    }
+
+    .header-inner {
+        min-height: 70px;
+    }
+}

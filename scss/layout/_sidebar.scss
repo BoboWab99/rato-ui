@@ -1,0 +1,16 @@
+// sidebar styles
+
+.help-links {
+    padding-block: 1rem;
+    font-size: .875rem;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .15rem 1rem;
+    }
+
+    li:not(:last-child) {
+        padding-right: 1rem;
+    }
+}

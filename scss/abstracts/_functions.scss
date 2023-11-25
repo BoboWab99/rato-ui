@@ -1,0 +1,21 @@
+// functions
+
+@function rgb($hex-color) {
+   // extract raw values
+   $r: red($hex-color);
+   $g: green($hex-color);
+   $b: blue($hex-color);
+
+   // convert decimals to integers
+   $r: round($r);
+   $g: round($g);
+   $b: round($b);
+
+   @return #{$r}, #{$g}, #{$b};
+}
+
+
+@function rgb-color($hex-color) {
+   $rgb: rgb($hex-color);
+   @return rgb(#{$rgb});
+}

@@ -1,0 +1,8 @@
+// bootstrap imports
+
+@use "../abstracts/variables" as var;
+
+$primary: var.$ca-color-primary;
+// $font-family-base: "Poppins", system-ui, sans-serif;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

@@ -1,0 +1,41 @@
+
+@use "../vendors/bootstrap" as bs;
+
+.cta-gif-frame {
+    --size: 100px;
+
+    @include bs.media-breakpoint-up(md) {
+        --size: 140px;
+    }
+
+    &::after {
+        content: "We";
+        position: absolute;
+        top: .5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        opacity: 0;
+        transition: 200ms ease-in;
+    }
+
+    &.show-we::after {
+        opacity: 1;
+    }
+}
+
+
+.scrollbar-orderhist {
+    .card {
+        height: 100%;
+    }
+}
+
+.card-header {
+    --bs-card-border-width: 2px;
+}
+
+// .offcanvas-header {
+//     --bs-border-width: 2px;
+//     border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+// }

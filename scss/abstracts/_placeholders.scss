@@ -1,0 +1,11 @@
+// placeholders
+
+@use "mixins" as mx;
+
+%square {
+   @include mx.square(var(--size, 50px))
+}
+
+%circle {
+   @include mx.circle(var(--size, 50px));
+}

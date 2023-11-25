@@ -1,0 +1,12 @@
+@use "../abstracts/variables" as var;
+
+.offcanvas {
+    &-content::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var.$ca-body-gradient;
+        border-radius: var.$ca-border-radius;
+        z-index: -1;
+    }
+}

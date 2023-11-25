@@ -1,0 +1,46 @@
+// button styles
+
+// buttons with icons
+
+.btn {
+
+    &-icon-text,
+    &-text-icon {
+        display: -ms-inline-grid;
+        display: -moz-inline-grid;
+        display: inline-grid;
+        align-items: center;
+    }
+
+    &-icon-text {
+        grid-template-columns: 1.75rem 1fr;
+
+        &>.icon {
+            order: 1;
+        }
+
+        &>.text {
+            order: 2;
+        }
+    }
+
+    &-text-icon {
+        grid-template-columns: 1fr 1.75rem;
+
+        &>.icon {
+            order: 2;
+        }
+
+        &>.text {
+            order: 1;
+        }
+    }
+
+    &.ms-reset {
+        margin-left: calc(-1 * var(--bs-btn-padding-x)) !important;
+    }
+
+    &.me-reset {
+        margin-right: calc(-1 * var(--bs-btn-padding-x)) !important;
+    }
+}

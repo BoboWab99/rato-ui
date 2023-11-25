@@ -1,0 +1,19 @@
+// alert notifications
+
+.alert-notify {
+   --spacer-x: 1rem;
+   --spacer-y: var(--spacer-x);
+   position: fixed !important;
+   max-width: 500px;
+   z-index: 9999;
+
+   &-top {
+      right: var(--spacer-x);
+      top: var(--spacer-y);
+   }
+   
+   &-bottom {
+      left: var(--spacer-x);
+      bottom: var(--spacer-y);
+   }
+}

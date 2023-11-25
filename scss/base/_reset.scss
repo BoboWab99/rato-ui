@@ -1,0 +1,162 @@
+// reset styles
+@use "sass:map";
+@use "../vendors/bootstrap" as bs;
+
+html {
+    font-size: 14px;
+}
+
+a:not(.underlined) {
+    text-decoration: none;
+}
+
+.fa-solid,
+.fas,
+.fa-regular,
+.far {
+    &:not(.fa-2x, .fa-3x) {
+        font-size: 16px;
+    }
+}
+
+.underlined {
+    --_main: rgba(var(--bs-link-color-rgb), .3);
+        $alt: bs.tint-color(bs.$primary, 60%);
+    text-decoration-color: var(--_main, $alt);
+    text-decoration-thickness: 2px;
+}
+
+.underlined:not(a) {
+    text-decoration-line: underline;
+}
+
+img,
+svg,
+canvas,
+video {
+    max-width: 100%;
+    display: block;
+}
+
+[type="checkbox"] {
+    min-width: 16px;
+    min-height: 16px;
+}
+
+// outline buttons
+// lighten border colors
+// make font slightly bolder
+@each $key in map.keys(bs.$theme-colors) {
+    .btn-outline-#{$key} {
+        --bs-btn-font-weight: #{bs.$font-weight-medium};
+        --bs-btn-border-color: #{bs.tint-color(map-get(bs.$theme-colors, $key), 60%)};
+
+        &:not(.btn-sm, .btn-lg) {
+            --bs-btn-font-size: .9375rem; // 15/16px
+        }
+    }
+}
+
+// dropdown menu
+.dropdown-menu {
+    --bs-dropdown-min-width: 170px;
+    --bs-dropdown-border-color: #fff;
+    // --bs-dropdown-link-hover-bg: #e7edfb;
+    box-shadow: 2px 4px 10px rgba(bs.$primary, .3);
+}
+
+// used outside dropdown-menu in some cases
+.dropdown-item {
+    --bs-dropdown-link-hover-bg: #eee9ee;
+    --bs-dropdown-item-padding-x: 1rem;
+    --bs-dropdown-item-padding-y: .5rem;
+    --bs-dropdown-item-border-radius: .5rem;
+}
+
+.list-group {
+    --bs-list-group-item-padding-y: .75rem;
+}
+
+// invalid form control
+.form-control:invalid {
+
+    // --bs-border-color: #{bs.$red};
+    &:focus {
+        border-color: #{bs.$red};
+        box-shadow: 0 0 0 0.25rem rgba(bs.$red, 0.25);
+    }
+}
+
+// table headings
+th {
+    // --bs-table-bg: #e0f1fd;
+    font-size: .875em; // 13/16px
+    vertical-align: middle;
+    text-transform: capitalize;
+    line-height: bs.$headings-line-height;
+    font-weight: bs.$font-weight-medium;
+}
+
+// offcanvas
+.offcanvas {
+    --bs-offcanvas-padding-x: 1.5rem;
+    --bs-offcanvas-padding-y: 1.25rem;
+    $_radius: .75rem;
+
+    &-start {
+        border-right: 0 !important;
+        box-shadow: 4px 4px 20px rgba(#000, .3);
+
+        @include bs.media-breakpoint-up(sm) {
+
+            &,
+            &>:first-child {
+                border-top-right-radius: $_radius;
+            }
+
+            &,
+            &>:last-child {
+                border-bottom-right-radius: $_radius;
+            }
+        }
+    }
+
+    &-end {
+        border-left: 0 !important;
+        box-shadow: -4px 4px 20px rgba(#000, .3);
+
+        @include bs.media-breakpoint-up(sm) {
+
+            &,
+            &>:first-child {
+                border-top-left-radius: $_radius;
+            }
+
+            &,
+            &>:last-child {
+                border-bottom-left-radius: $_radius;
+            }
+        }
+    }
+
+    // &-header {
+    //    background-color: var(--_bg);
+    //    border-bottom: 1px solid var(--bs-primary-border-subtle);
+    //    box-shadow: abs.$shadow-sm;
+    //    z-index: 1;
+    // }
+}
+
+// container stuff
+// we'll stick to container-xl in this project
+.container-xl {
+    --bs-gutter-x: 2.5rem;
+
+    @include bs.media-breakpoint-up(sm) {
+        --bs-gutter-x: 4rem;
+    }
+
+    @include bs.media-breakpoint-up(lg) {
+        --bs-gutter-x: 7rem;
+    }
+}
