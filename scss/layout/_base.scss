@@ -53,6 +53,7 @@
 
     &-middle-wrapper {
         flex-grow: 1;
+        min-width: min(100%, 300px);
     }
 
     &-middle-inner {
@@ -169,6 +170,7 @@
 
         &-middle-wrapper {
             max-width: 576px;
+            min-width: 400px;
             flex-grow: 0;
         }
 
@@ -188,4 +190,10 @@
             padding-right: 2.5rem;
         }
     }
+}
+
+
+.column-container {
+    column-count: var(--cols, 2);
+    column-gap: var(--gap, 1rem);
 }

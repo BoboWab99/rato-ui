@@ -17,6 +17,35 @@ window.addEventListener("resize", () => {
 })
 
 
+dom.all(`[data-cta="odNavItem"]`).forEach(btn => {
+    btn.addEventListener("click", () => {
+        const activeBtn = dom.get(`[data-cta="odNavItem"].active`)
+        activeBtn.removeAttribute("aria-current")
+        activeBtn.classList.remove("active")
+
+        btn.setAttribute("aria-current", "true")
+        btn.classList.add("active")
+    })
+})
+
+dom.all(`[name="selectOrder"]`).forEach(check => {
+    check.addEventListener("change", () => {
+        const moveSelectedEl = dom.get(".move-selected-orders")
+        const allChecked = dom.all(`[name="selectOrder"]:checked`)
+        if (allChecked.length > 0) moveSelectedEl.classList.add("show")
+        else moveSelectedEl.classList.remove("show")
+    })
+})
+
+window.addEventListener("scroll", () => {
+    dom.all(".sticky-top").forEach(el => {
+        const { top } = el.getBoundingClientRect()
+        if (top <= 0) el.classList.add("stuck")
+        else el.classList.remove("stuck")
+    })
+})
+
+
 /**
  * Hide or show top and bottom navigations
  * when user scrolls up or down
@@ -105,6 +134,7 @@ function playWelcomeGif() {
     let index = 0
 
     const changeGIF = () => {
+        if (!dom.id("ctaGifIframe")) return // avoid breaking code
         const iframeWrapper = dom.id("ctaGifIframe").closest(".cta-gif-frame")
         if (index === 3) iframeWrapper.classList.add("show-we")
         else iframeWrapper.classList.remove("show-we")

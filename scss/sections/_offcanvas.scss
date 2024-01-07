@@ -1,9 +1,114 @@
 // offcanvas styles
 
+@use "../vendors/bootstrap" as bs;
+@use "../abstracts/mixins" as mx;
+
+
+%nav-item-after {
+    position: relative;
+
+    &::after {
+        background-color: rgba(0, 0, 0, 0);
+        transition: 500ms ease-in-out;
+        position: absolute;
+        content: "";
+        height: 3px;
+    }
+
+    &.active {
+        &::after {
+            background-color: var(--bs-primary);
+        }
+    }
+}
+
+
+#offcanvasOrderDetails {
+    $nav-height: 65px;
+
+    @include bs.media-breakpoint-down(sm) {
+        width: 100%;
+    }
+
+    #odNavItemDeliverer {
+        @extend %nav-item-after;
+
+        &.active {
+            --bs-btn-active-color: var(--bs-primary);
+            --bs-btn-active-border-color: rgba(0, 0, 0, 0);
+        }
+
+        &::after {
+            inset: auto 0 -15px 0;
+        }
+    }
+
+    .offcanvas {
+        &-body {
+            max-height: calc(100% - 2 * $nav-height);
+            overflow-y: revert;
+        }
+
+        &-header,
+        &-footer {
+            height: $nav-height;
+            position: relative;
+            z-index: 5;
+        }
+    }
+
+    .carousel {
+
+        &-inner,
+        &-item,
+        & {
+            max-height: 100%;
+            height: 100%;
+        }
+
+        &-item {
+            padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x);
+            background-color: #f7f5fa;
+            overflow-y: auto;
+        }
+    }
+
+}
+
+
 .offcanvas {
     $item-padding-x: 1rem;
 
-    max-width: calc(100% - 5vw);
+    &-nav {
+        .nav {
+            height: 65px;
+        }
+
+        .nav-link {
+            --bs-nav-link-color: var(--bs-gray-800);
+            --bs-nav-link-font-size: 1.75em;
+            @include mx.center(flex);
+            @extend %nav-item-after;
+            transition: 200ms ease-in-out;
+            height: 100%;
+
+            &.active {
+                --bs-nav-link-color: var(--bs-primary);
+            }
+
+            &::after {
+                inset: 0 0 auto 0;
+            }
+        }
+    }
+
+    .card {
+        margin-inline: -0.75rem;
+    }
+
+    &.max {
+        max-width: calc(100% - 5vw);
+    }
 
     .ms-reset {
         margin-inline-start: -1.5rem;

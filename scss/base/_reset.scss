@@ -39,8 +39,9 @@ video {
 }
 
 [type="checkbox"] {
-    min-width: 16px;
-    min-height: 16px;
+    --check-size: 16px;
+    min-width: var(--check-size);
+    min-height: var(--check-size);
 }
 
 // outline buttons

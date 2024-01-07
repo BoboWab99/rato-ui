@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - RATO</title>
+    <link rel="stylesheet" href="./assets/vendor/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div id="root">
+        <div class="layout">
+            <header id="header" class="header-primary fixed-top bg-white border-bottom d-sm-none">
+                <div class="layout-header-container px-3">
+                    <div class="header-inner row gx-0">
+                        <div class="layout-header-left col-2 d-grid align-items-center">
+                            <div>
+                                <button class="btn btn-outline-primary border-transparent d-md-none btn-lg ms-reset">
+                                    <span><i class="fa-solid fa-chevron-left"></i></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="layout-header-middle col-8 col-md-6 d-grid align-items-center">
+                            <div>
+                                <h4 class="page-title text-center mb-0 d-lg-none">Orders</h4>
+                            </div>
+                        </div>
+
+                        <div class="layout-header-right col-2 d-grid align-items-center">
+                            <div>
+                                <div class="d-flex align-items-center justify-content-end gap-3">
+                                    <a role="button" class="btn btn-lg btn-outline-primary border-transparent me-reset"
+                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccount"
+                                        aria-controls="offcanvasAccount" id="offcanvas-open-profile-btn">
+                                        <i class="fa-solid fa-user"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="nav-bottom-wrapper fixed-bottom d-sm-none" id="bottomNav">
+                <nav class="nav-bottom">
+                    <ul class="nav-list">
+                        <li class="nav-item active" role="button" page-name="Home">
+                            <a class="nav-link text-center">
+                                <span class="icon "><ion-icon name="home-outline"></ion-icon></span>
+                                <small class="text">Home</small>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="button" page-name="My Products">
+                            <a class="nav-link text-center">
+                                <span class="icon "><ion-icon name="pricetags-outline"></ion-icon></span>
+                                <small class="text">Products</small>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="button" page-name="My Cart">
+                            <a class="nav-link text-center nav-link-primary">
+                                <span class="icon "><ion-icon name="bag-add-outline"></ion-icon></span>
+                                <small class="text"></small></a>
+                        </li>
+                        <li class="nav-item nav-item-cart" role="button" page-name="My Cart">
+                            <a class="nav-link text-center">
+                                <span class="icon position-relative">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                        style="font-size: 8px;">0</span>
+                                </span>
+                                <small class="text">Cart</small>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="button" onclick="sendEvent('ui:needs:offcanvas:nav')"
+                            page-name="More">
+                            <a class="nav-link text-center">
+                                <span class="icon "><ion-icon name="ellipsis-horizontal-outline"></ion-icon></span>
+                                <small class="text">More</small>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="layout-inner">
+                <div class="layout-start-wrapper">
+                    <div class="layout-start-inner">
+                        <div class="layout-start">
+                            <div class="layout-start-container scrollbar-sm py-4">
+                                <div class="brand-wrapper">
+                                    <h4 class="text-uppercase text-black px-3">RATO</h4>
+                                </div>
+                                <div class="nav-main-wrapper">
+                                    <nav class="nav-main">
+                                        <ul class="nav-list">
+                                            <li class="nav-list-item" page-name="Home">
+                                                <a role="button" class="nav-item" href="#">
+                                                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                                                    <span class="text">Home</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-list-item" page-name="My cart">
+                                                <a role="button" class="nav-item nav-item-cart" href="#">
+                                                    <span class="icon"><ion-icon name="cart-outline"></ion-icon></span>
+                                                    <span class="text">My cart</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-list-item" page-name="My Orders">
+                                                <a role="button" class="nav-item" href="#">
+                                                    <span class="icon"><ion-icon name="cash-outline"></ion-icon></span>
+                                                    <span class="text">My Orders</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-list-item" page-name="My Products">
+                                                <a role="button" class="nav-item" href="#">
+                                                    <span class="icon"><ion-icon
+                                                            name="pricetags-outline"></ion-icon></span>
+                                                    <span class="text">My Products</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-list-item" page-name="My Addresses">
+                                                <a role="button" class="nav-item" href="#">
+                                                    <span class="icon"><ion-icon name="map-outline"></ion-icon></span>
+                                                    <span class="text">My Addresses</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-list-item" page-name="Payment Requests">
+                                                <a role="button" class="nav-item" href="#">
+                                                    <span class="icon"><ion-icon
+                                                            name="wallet-outline"></ion-icon></span>
+                                                    <span class="text">Payment Requests</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-list-item" page-name="Profile">
+                                                <a role="button" class="nav-item" href="#">
+                                                    <span class="icon"><ion-icon
+                                                            name="person-outline"></ion-icon></span>
+                                                    <span class="text">Profile</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="auth-wrapper">
+                                            <hr>
+                                            <div class="px-3">
+                                                <div role="button" tabindex="0" class="btn btn-auth"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <div class="btn-auth-inner">
+                                                        <div
+                                                            class="btn-auth-profile square-profile rounded-circle fw-500 text-white">
+                                                            <span>TU</span>
+                                                        </div>
+                                                        <div class="btn-auth-text gap-1 lh-1">
+                                                            <div class="fs-5 pb-1">Tester1 User</div>
+                                                            <a href="mailto:user1@rato.com">user1@rato.com</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <h6 class="dropdown-header">Close session</h6>
+                                                    </li>
+                                                    <li>
+                                                        <div role="button"
+                                                            class="dropdown-item dropdown-item-danger btn-icon-text gap-1"
+                                                            title="Delete">
+                                                            <span class="text">Logout</span>
+                                                            <span class="icon"><i
+                                                                    class="fa-solid fa-power-off"></i></span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layout-middle-wrapper">
+                    <div class="layout-middle-inner py-4">
+                        <main class="d-grid gap-3">
+                            <!-- Move order buttons -->
+                            <div class="move-selected-orders fixed-bottom">
+                                <div class="card shadow rounded-pill mx-2 my-3">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <button type="button" class="btn btn-cta">
+                                                <i class="fas fa-arrow-left"></i>
+                                            </button>
+                                            <span class="">Move selected orders</span>
+                                            <button type="button" class="btn btn-cta">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Selected order filters -->
+                            <div class="sticky-top" id="selectedOStatusFilters">
+                                <div class="wrapper">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="mb-1">Currently viewing Orders with Statuses:</p>
+                                            <span class="badge rounded-pill text-body bg-light text-uppercase">confirmed</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Order cards -->
+                            <div class="card">
+                                <div class="card-body" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasOrderDetails" role="button">
+                                    <div class="d-grid gap-1">
+                                        <div>
+                                            <span>Placed at:</span>
+                                            <span class="px-1 fw-500">12/30/2023 7:02:26 PM</span>
+                                        </div>
+                                        <div>
+                                            <span>Delivery Price:</span>
+                                            <span class="px-1">KES&nbsp;32.00</span>
+                                        </div>
+                                        <div>
+                                            <span>Order Code:</span>
+                                            <span class="px-1">D</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between gap-2">
+                                        <button class="btn btn-sm text-uppercase border-transparent btn-outline-primary"
+                                            style="margin-left: -5px;">
+                                            <i class="fas fa-arrow-left"></i>
+                                            <span class="mx-2">dispute</span>
+                                        </button>
+                                        <div class="d-flex gap-3">
+                                            <button
+                                                class="btn btn-sm text-uppercase border-transparent btn-outline-success">
+                                                <span class="mx-2">processing</span>
+                                                <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                            <span>
+                                                <input type="checkbox" name="selectOrder" id="selectOrder1"
+                                                    class="form-check-input m-0" style="--check-size: 27px">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasOrderDetails" role="button">
+                                    <div class="d-grid gap-1">
+                                        <div>
+                                            <span>Placed at:</span>
+                                            <span class="px-1 fw-500">12/30/2023 7:02:26 PM</span>
+                                        </div>
+                                        <div>
+                                            <span>Delivery Price:</span>
+                                            <span class="px-1">KES&nbsp;32.00</span>
+                                        </div>
+                                        <div>
+                                            <span>Order Code:</span>
+                                            <span class="px-1">D</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between gap-2">
+                                        <button class="btn btn-sm text-uppercase border-transparent btn-outline-primary"
+                                            style="margin-left: -5px;">
+                                            <i class="fas fa-arrow-left"></i>
+                                            <span class="mx-2">dispute</span>
+                                        </button>
+                                        <div class="d-flex gap-3">
+                                            <button
+                                                class="btn btn-sm text-uppercase border-transparent btn-outline-success">
+                                                <span class="mx-2">processing</span>
+                                                <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                            <span>
+                                                <input type="checkbox" name="selectOrder" id="selectOrder1"
+                                                    class="form-check-input m-0" style="--check-size: 27px">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-body" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasOrderDetails" role="button">
+                                    <div class="d-grid gap-1">
+                                        <div>
+                                            <span>Placed at:</span>
+                                            <span class="px-1 fw-500">12/30/2023 7:02:26 PM</span>
+                                        </div>
+                                        <div>
+                                            <span>Delivery Price:</span>
+                                            <span class="px-1">KES&nbsp;32.00</span>
+                                        </div>
+                                        <div>
+                                            <span>Order Code:</span>
+                                            <span class="px-1">D</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between gap-2">
+                                        <button class="btn btn-sm text-uppercase border-transparent btn-outline-primary"
+                                            style="margin-left: -5px;">
+                                            <i class="fas fa-arrow-left"></i>
+                                            <span class="mx-2">dispute</span>
+                                        </button>
+                                        <div class="d-flex gap-3">
+                                            <button
+                                                class="btn btn-sm text-uppercase border-transparent btn-outline-success">
+                                                <span class="mx-2">processing</span>
+                                                <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                            <span>
+                                                <input type="checkbox" name="selectOrder" id="selectOrder1"
+                                                    class="form-check-input m-0" style="--check-size: 27px">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="min-height: 100vh;"></div>
+                        </main>
+                    </div>
+                </div>
+
+                <div class="layout-end-wrapper">
+                    <div class="layout-end-inner">
+                        <div class="layout-end">
+                            <div class="layout-end-container scrollbar-sm py-4">
+                                <div class="cta-wrapper">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+                                            explicabo cupiditate eius hic sit harum quae quidem repudiandae incidunt
+                                            minima?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="help-links-wrapper">
+                                    <nav class="help-links">
+                                        <ul class="mb-0">
+                                            <li><a href="#">About</a></li>
+                                            <li><a href="#">Locations</a></li>
+                                            <li><a href="#">FAQs</a></li>
+                                            <li><a href="#">Terms of service</a></li>
+                                            <li><a href="#">Privacy policy</a></li>
+                                            <li><a href="#">Cookie policy</a></li>
+                                            <li><a href="https://carata.co.ke/" target="_blank"
+                                                    class="text-decoration-underline">Carata</a></li>
+                                        </ul>
+                                    </nav>
+                                    <div class="copyright fs-sm px-3">
+                                        <p class="text-muted py-2">&copy; 2023 RATO FROM CARATA</p>
+                                        <p class="text-uppercase fw-500 underlined">Order anything. Anytime.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasOrderDetails"
+        aria-labelledby="offcanvasOrderDetailsLabel">
+        <div class="offcanvas-header border-bottom" style="--bs-offcanvas-padding-y: 1rem">
+            <div class="d-flex align-items-center gap-4">
+                <button type="button" class="btn btn-cta" data-bs-dismiss="offcanvas" aria-label="Close"
+                    style="margin-left: -8px">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </button>
+                <h5 class="offcanvas-title fw-400 text-black" id="offcanvasOrderDetailsLabel">Order details</h5>
+            </div>
+            <div>
+                <button type="button" class="btn btn-cta" data-bs-target="#carouselOrderDetails" data-bs-slide-to="0"
+                    aria-label="Assigned deliverer" data-cta="odNavItem" id="odNavItemDeliverer"
+                    style="margin-right: -5px">
+                    <i class="fa-solid fa-person-biking" style="font-size: 1.35em;"></i>
+                </button>
+            </div>
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+        </div>
+
+        <div class="offcanvas-body p-0">
+            <div id="carouselOrderDetails" class="carousel slide carousel-fade" data-bs-touch="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <h6 class="pb-3">Assigned Deliverer</h6>
+                        <div class="d-grid gap-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <b class="text-muted">Deliverer Name:</b>
+                                        <p class="mb-0"><span>Deliverer Rato</span></p>
+                                    </div>
+                                    <div class="d-flex gap-3 align-items-center justify-content-between">
+                                        <a class="link-primary" href="tel:+725.230.3449">
+                                            <i class="fas fa-phone"></i>
+                                            <span class="px-2">Call</span>
+                                        </a>
+                                        <a class="link-success"
+                                            href="https://api.whatsapp.com/send?phone=+725.230.3449&amp;text=Hi, I am Deliverer From Carata. I am texting regarding order with code: D">
+                                            <i class="fa-brands fa-whatsapp" style="font-size: 1.25em;"></i>
+                                            <span class="px-2">WhatsApp</span>
+                                        </a>
+                                        <a class="link-dark" href="#">
+                                            <i class="far fa-message"></i>
+                                            <span class="px-2">SMS</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <h6 class="pb-3">Payments made</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="column-container">
+                                    <span class="d-block mb-2">
+                                        <b class="text-muted">Status:</b>
+                                        <span class="rounded-pill badge bg-success text-capitalize">completed</span>
+                                    </span>
+                                    <span class="d-block mb-2">
+                                        <b class="text-muted">Paid:</b>
+                                        <span class="text">KES&nbsp;698.00</span>
+                                    </span>
+                                    <span class="d-block mb-2">
+                                        <b class="text-muted">Transaction ID:</b>
+                                        <span class="text">1DF5709D92</span>
+                                    </span>
+                                    <span class="d-block mb-2">
+                                        <b class="text-muted">Method:</b>
+                                        <span class="text">MPESA</span>
+                                    </span>
+                                    <span class="d-block mb-2">
+                                        <b class="text-muted">Started:</b><br>
+                                        <span class="text">12/30/2023 7:02:27 PM</span>
+                                    </span>
+                                    <span class="d-block mb-2">
+                                        <b class="text-muted">Updated:</b><br>
+                                        <span class="text">12/30/2023 7:02:27 PM</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 class="pb-3 pt-2 mt-4">Payments top-ups</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                ...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <h6 class="pb-3">Delivery address</h6>
+                        <div class="d-grid gap-3">
+                            <div class="card">
+                                <div class="card-body d-grid gap-3">
+                                    <p class="mb-0"><i>16178 Leopoldo Estates Suite 850 Streichfurt, RI 05783, Nairobi, Nairobi City, Kenya </i></p>
+                                    <div>
+                                        <small class="fw-700 text-muted">Delivered To:</small>
+                                        <p class="mb-0"><span>Deliverer Rato </span></p>
+                                    </div>
+                                    <div>
+                                        <small class="fw-700 text-muted">Phone:</small>
+                                        <p class="mb-0" onclick="tool.toClipboard('725.230.3449')">725.230.3449</p>
+                                    </div>
+                                    <div>
+                                        <small class="fw-700 text-muted">Additional info:</small>
+                                        <p class="mb-0">Sunt quia atque molestiae.</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <a href="#">
+                                            <i class="fas fa-location-dot"></i>
+                                            <span class="px-2">View on Maps</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="fw-400 pb-3">Order pickup contact:</h6>
+                                    <div class="d-flex gap-3 align-items-center justify-content-between">
+                                        <a class="link-primary" href="tel:+725.230.3449">
+                                            <i class="fas fa-phone"></i>
+                                            <span class="px-2">Call</span>
+                                        </a>
+                                        <a class="link-success"
+                                            href="https://api.whatsapp.com/send?phone=+725.230.3449&amp;text=Hi, I am Deliverer From Carata. I am texting regarding order with code: D">
+                                            <i class="fa-brands fa-whatsapp" style="font-size: 1.25em;"></i>
+                                            <span class="px-2">WhatsApp</span>
+                                        </a>
+                                        <a class="link-dark" href="#">
+                                            <i class="far fa-message"></i>
+                                            <span class="px-2">SMS</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <h6 class="pb-3">Customer details</h6>
+                        <div class="d-grid gap-3">
+                            <div class="card">
+                                <div class="card-body d-grid gap-3">
+                                    <div>
+                                        <small class="fw-700 text-muted">Name:</small>
+                                        <p class="mb-0"><span>Deliverer Rato</span></p>
+                                    </div>
+                                    <div>
+                                        <small class="fw-700 text-muted">Phone:</small>
+                                        <p class="mb-0" onclick="tool.toClipboard('725.230.3449')">
+                                            <span>725.230.3449</span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <small class="fw-700 text-muted">Email:</small>
+                                        <p class="mb-0" onclick="tool.toClipboard('deliverer@rato.com')">
+                                            <span>deliverer@rato.com</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="fw-400 pb-3">Contact customer:</h6>
+                                    <div class="d-flex gap-3 align-items-center justify-content-between">
+                                        <a class="link-primary" href="tel:+725.230.3449">
+                                            <i class="fas fa-phone"></i>
+                                            <span class="px-2">Call</span>
+                                        </a>
+                                        <a class="link-success" href="https://api.whatsapp.com/send?phone=+725.230.3449&amp;text=Hi, I am Deliverer From Carata. I am texting regarding order with code: D">
+                                            <i class="fa-brands fa-whatsapp" style="font-size: 1.25em;"></i>
+                                            <span class="px-2">WhatsApp</span>
+                                        </a>
+                                        <a class="link-dark" href="#">
+                                            <i class="far fa-message"></i>
+                                            <span class="px-2">SMS</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <h6 class="pb-3">Order details</h6>
+                        <div class="details-wrapper d-grid gap-3">
+                            <div class="card">
+                                <div class="card-body d-grid gap-3">
+                                    <div class="column-container">
+                                        <span class="d-block mb-1">
+                                            <b class="text-muted">Status:</b>
+                                            <span class="text rounded-pill badge bg-secondary text-capitalize">confirmed</span>
+                                        </span>
+                                        <span class="d-block mb-1">
+                                            <b class="text-muted">Paid:</b>
+                                            <span>KES&nbsp;698.00</span>
+                                        </span>
+                                        <span class="d-block mb-1">
+                                            <b class="text-muted">Price:</b>
+                                            <span>KES&nbsp;1,809.00</span>
+                                        </span>
+                                        <span class="d-block mb-1">
+                                            <b class="text-muted">Delivery fee:</b>
+                                            <span>KES&nbsp;32.00</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="notes">
+                                        <b class="d-block text-muted">Order Notes:</b>
+                                        <span>Placeat ipsum quasi quas commodi laudantium.</span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between gap-3 pt-2">
+                                        <button type="button" class="btn btn-sm btn-outline-danger text-uppercase border-transparent" style="margin-left: -5px;">
+                                            <i class="fas fa-comment-dollar"></i>
+                                            <span class="mx-2">Top-up Fee</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger text-uppercase border-transparent" style="margin-right: -12px;">
+                                            <i class="fas fa-hand-holding-dollar"></i>
+                                            <span class="mx-2">Top-up Price</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="fw-400 pb-2">Change status:</h6>
+                                    <div class="d-flex justify-content-between gap-2">
+                                        <button class="btn btn-sm text-uppercase border-transparent btn-outline-primary"
+                                            style="margin-left: -5px;">
+                                            <i class="fas fa-arrow-left"></i>
+                                            <span class="mx-2">dispute</span>
+                                        </button>
+                                        <button
+                                            class="btn btn-sm text-uppercase border-transparent btn-outline-success" style="margin-right: -5px;">
+                                            <span class="mx-2">processing</span>
+                                            <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active">
+                        <h6 class="pb-3">Ordered items</h6>
+                        <div class="order-list d-grid gap-3">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="d-none col-md-4"><img src="#" class="img-fluid rounded-start"
+                                            alt="Item Image"></div>
+                                    <div class="col">
+                                        <div class="card-body d-flex gap-3">
+                                            <div class="card-body-content flex-grow-1">
+                                                <h5 class="card-title fw-400">Antonia Harber<span
+                                                        class="ps-2 text-primary">x0</span></h5>
+                                                <p class="card-text text-muted">Ipsum quas aut aspernatur dolores. Nemo
+                                                    voluptatem quia
+                                                    quibusdam illo sunt autem. Laborum delectus saepe porro vero qui.
+                                                </p>
+                                                <p class="card-text"><small class="text-muted">Estimated Price: <span
+                                                            class="ps-2 text-black fw-600">KES&nbsp;353.00</span></small>
+                                                </p>
+                                            </div>
+                                            <div class="card-body-cta" id="order-item-5">
+                                                <div class="h-100 d-flex flex-column justify-content-center gap-1"
+                                                    id="order-item-5">
+                                                    <span class="btn-cta btn-cta-success"><i
+                                                            class="fa-square far"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="d-none col-md-4"><img src="#" class="img-fluid rounded-start"
+                                            alt="Item Image"></div>
+                                    <div class="col">
+                                        <div class="card-body d-flex gap-3">
+                                            <div class="card-body-content flex-grow-1">
+                                                <h5 class="card-title fw-400">Russ Ferry Jr.<span
+                                                        class="ps-2 text-primary">x2</span></h5>
+                                                <p class="card-text text-muted">Est placeat adipisci consequatur soluta.
+                                                    Atque autem ab qui non
+                                                    incidunt quis. Sed odit error quos quisquam.</p>
+                                                <p class="card-text"><small class="text-muted">Estimated Price: <span
+                                                            class="ps-2 text-black fw-600">KES&nbsp;333.00</span></small>
+                                                </p>
+                                            </div>
+                                            <div class="card-body-cta" id="order-item-6">
+                                                <div class="h-100 d-flex flex-column justify-content-center gap-1"
+                                                    id="order-item-6">
+                                                    <span class="btn-cta btn-cta-success"><i
+                                                            class="fa-square far"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="d-none col-md-4"><img src="#" class="img-fluid rounded-start"
+                                            alt="Item Image"></div>
+                                    <div class="col">
+                                        <div class="card-body d-flex gap-3">
+                                            <div class="card-body-content flex-grow-1">
+                                                <h5 class="card-title fw-400">Luna McCullough<span
+                                                        class="ps-2 text-primary">x0</span></h5>
+                                                <p class="card-text text-muted">Impedit itaque quis corrupti dolores ab
+                                                    officia quas. Et natus
+                                                    non quos. Et nisi ipsam excepturi neque et quidem.</p>
+                                                <p class="card-text"><small class="text-muted">Estimated Price: <span
+                                                            class="ps-2 text-black fw-600">KES&nbsp;388.00</span></small>
+                                                </p>
+                                            </div>
+                                            <div class="card-body-cta" id="order-item-7">
+                                                <div class="h-100 d-flex flex-column justify-content-center gap-1"
+                                                    id="order-item-7">
+                                                    <span class="btn-cta btn-cta-success"><i
+                                                            class="fa-square far"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="offcanvas-footer border-top">
+            <nav class="offcanvas-nav">
+                <ul class="d-flex flex-items-equal nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-target="#carouselOrderDetails" data-bs-slide-to="1"
+                            aria-label="Payments" data-cta="odNavItem">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-target="#carouselOrderDetails" data-bs-slide-to="2"
+                            aria-label="Delivery address" data-cta="odNavItem">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-target="#carouselOrderDetails" data-bs-slide-to="3"
+                            aria-label="Customer details" data-cta="odNavItem">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-target="#carouselOrderDetails" data-bs-slide-to="4"
+                            aria-label="Order details" data-cta="odNavItem">
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-bs-target="#carouselOrderDetails" data-bs-slide-to="5"
+                            aria-current="true" aria-label="Ordered items" data-cta="odNavItem">
+                            <ion-icon name="pricetags-outline"></ion-icon>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+    <script src="./assets/vendor/jquery-3.6.4/jquery.min.js"></script>
+    <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="./js/fotastart.js"></script>
+    <script src="./js/app.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

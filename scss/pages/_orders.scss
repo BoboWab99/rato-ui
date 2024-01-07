@@ -1,0 +1,33 @@
+
+#selectedOStatusFilters {
+    $layout-middle-inner-padding-x: 10px;
+
+    &.stuck {
+        .wrapper {
+            border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+            margin-inline: -1 * $layout-middle-inner-padding-x;
+            padding-inline: $layout-middle-inner-padding-x;
+            background-color: #fff;
+        }
+
+        .card {
+            box-shadow: none;
+        }
+    }
+}
+
+.move-selected-orders {
+    transition: 250ms ease-in-out;
+    transform: translateY(105%);
+    background-color: #f7f5fa;
+    z-index: 1040;
+    height: 96px;
+
+    &.show {
+        transform: translateY(0);
+    }
+
+    .btn>* {
+        font-size: 1.35em;
+    }
+}

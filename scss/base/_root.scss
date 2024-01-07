@@ -1,1 +1,8 @@
 // root css variables
+
+@use "../abstracts/variables" as var;
+
+
+:root {
+    --bg-layout: #{var.$ca-bg-layout};
+}

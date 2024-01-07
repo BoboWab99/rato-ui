@@ -3,6 +3,28 @@
 @use "../abstracts/mixins" as mx;
 @use "../abstracts/variables" as var;
 
+
+.btn-cta {
+    --bs-btn-color: var(--bs-gray-800);
+    --bs-btn-padding-x: 0;
+    --bs-btn-padding-y: 0;
+    @include mx.circle(36px);
+
+    ion-icon {
+        font-size: 1.75em;
+    }
+}
+
+.flex-items-equal {
+    &>* {
+        flex: 1 1 0;
+    }
+}
+
+.bg-layout {
+    background-color: var.$ca-bg-layout !important;
+}
+
 .minh-100vh {
     min-height: 100vh !important; // backup
     min-height: 100dvh !important;
