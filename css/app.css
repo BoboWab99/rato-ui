@@ -11970,7 +11970,7 @@ textarea.form-control-lg {
 }
 
 html {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 a:not(.underlined) {
@@ -12070,6 +12070,11 @@ video {
 }
 .btn-outline-dark:not(.btn-sm, .btn-lg) {
   --bs-btn-font-size: .9375rem;
+}
+
+.btn-sm,
+.btn-group-sm > .btn {
+  --bs-btn-border-radius: var(--bs-border-radius);
 }
 
 .dropdown-menu {
@@ -12409,7 +12414,37 @@ th {
   border-radius: 0.75rem;
   z-index: -1;
 }
+.offcanvas-options .offcanvas-body {
+  padding-block-start: 0;
+}
+.offcanvas-options .dropdown-item {
+  display: grid;
+  grid-template-columns: var(--iconw, 2.5rem) 1fr;
+  margin-inline: calc(-0.75 * var(--bs-dropdown-item-padding-x));
+}
+.offcanvas-resizable.offcanvas-bottom {
+  max-height: 90%;
+}
+.offcanvas-resizable .resize-handle {
+  cursor: ns-resize;
+}
+.offcanvas-resizable .offcanvas-header::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  height: 5px;
+  width: 36px;
+  transform: translateX(-50%);
+  background-color: var(--bs-gray-400);
+  border-radius: var(--bs-border-radius);
+}
 
+/* 
+Assume you have multiple bootstrap offcanvases with classes "offcanvas-resizable offcanvas bottom",
+height: 300px and max-height: calc(100% - 50px). If an offcanvas opens with a lot of content,
+I want the user to be able to expand the offcanvas using a handle inside the offcanvas header to fit the content. If one drags the handle up, the offcanvas grows to fit the content without exceeding the set max-height. If one drags the handle down by 50px, the offcanvas disappears. How is this implemented?
+*/
 .btn-fab {
   --bs-btn-padding-x: 0;
   --bs-btn-padding-y: 0;
@@ -12484,6 +12519,17 @@ inset 0 0 0 1px hsla(0,0%,100%,.15), 0 2px 8px rgba(13,18,22,.15)
   --bs-card-inner-border-radius: calc(var(--bs-card-border-radius) - 1px);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border: 0;
+  /* .btn-cta {
+      @include mx.square(30px, 7px);
+
+      &-success {
+          color: bs.$success;
+      }
+
+      &-danger {
+          color: bs.$danger;
+      }
+  } */
 }
 .card.mb-3 {
   margin-bottom: 0.7rem !important;
@@ -12494,22 +12540,6 @@ inset 0 0 0 1px hsla(0,0%,100%,.15), 0 2px 8px rgba(13,18,22,.15)
   padding-block: 0.5rem;
   background-color: #ececeb;
   border-radius: 0.6rem;
-}
-.card .btn-cta {
-  --size: 30px;
-  width: var(--size);
-  height: var(--size);
-  flex: 0 0 auto;
-  border-radius: 7px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.card .btn-cta-success {
-  color: #198754;
-}
-.card .btn-cta-danger {
-  color: #dc3545;
 }
 
 .layout {

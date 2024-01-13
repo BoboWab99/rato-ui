@@ -3,7 +3,7 @@
 @use "../vendors/bootstrap" as bs;
 
 html {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 a:not(.underlined) {
@@ -56,6 +56,12 @@ video {
             --bs-btn-font-size: .9375rem; // 15/16px
         }
     }
+}
+
+// buttons
+.btn-sm,
+.btn-group-sm>.btn {
+    --bs-btn-border-radius: var(--bs-border-radius);
 }
 
 // dropdown menu

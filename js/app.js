@@ -12,11 +12,12 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 window.addEventListener("resize", () => {
-    addNavTooltips()
     toggleNavShowOnMobile()
+    addNavTooltips()
 })
 
 
+// Highlight active order details offcanvas nav items
 dom.all(`[data-cta="odNavItem"]`).forEach(btn => {
     btn.addEventListener("click", () => {
         const activeBtn = dom.get(`[data-cta="odNavItem"].active`)
@@ -28,20 +29,22 @@ dom.all(`[data-cta="odNavItem"]`).forEach(btn => {
     })
 })
 
+
+// Show move order options after selection
 dom.all(`[name="selectOrder"]`).forEach(check => {
     check.addEventListener("change", () => {
         const moveSelectedEl = dom.get(".move-selected-orders")
         const allChecked = dom.all(`[name="selectOrder"]:checked`)
-        if (allChecked.length > 0) moveSelectedEl.classList.add("show")
-        else moveSelectedEl.classList.remove("show")
+        moveSelectedEl.classList.toggle("show", allChecked.length > 0)
     })
 })
 
+
+// Add css class when sticky element reaches top
 window.addEventListener("scroll", () => {
     dom.all(".sticky-top").forEach(el => {
         const { top } = el.getBoundingClientRect()
-        if (top <= 0) el.classList.add("stuck")
-        else el.classList.remove("stuck")
+        el.classList.toggle("stuck", top <= 0)
     })
 })
 

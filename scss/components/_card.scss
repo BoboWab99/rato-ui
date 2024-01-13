@@ -33,7 +33,7 @@ inset 0 0 0 1px hsla(0,0%,100%,.15), 0 2px 8px rgba(13,18,22,.15)
         border-radius: #{var.$ca-border-radius - .15rem};
     }
 
-    .btn-cta {
+    /* .btn-cta {
         @include mx.square(30px, 7px);
 
         &-success {
@@ -43,5 +43,5 @@ inset 0 0 0 1px hsla(0,0%,100%,.15), 0 2px 8px rgba(13,18,22,.15)
         &-danger {
             color: bs.$danger;
         }
-    }
+    } */
 }

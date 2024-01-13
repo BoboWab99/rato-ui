@@ -9,4 +9,46 @@
         border-radius: var.$ca-border-radius;
         z-index: -1;
     }
+
+    &-options {
+        .offcanvas-body {
+                padding-block-start: 0;
+            }
+
+        .dropdown-item {
+            display: grid;
+            grid-template-columns: var(--iconw, 2.5rem) 1fr;
+            margin-inline: calc(-0.75 * var(--bs-dropdown-item-padding-x));
+        }
+    }
+
+    &-resizable {
+        &.offcanvas-bottom {
+            max-height: 90%;
+        }
+
+        .resize-handle {
+            cursor: ns-resize;
+        }
+
+        .offcanvas-header::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            height: 5px;
+            width: 36px;
+            // cursor: ns-resize;
+            transform: translateX(-50%);
+            background-color: var(--bs-gray-400);
+            border-radius: var(--bs-border-radius);
+        }
+    }
 }
+
+
+/* 
+Assume you have multiple bootstrap offcanvases with classes "offcanvas-resizable offcanvas bottom",
+height: 300px and max-height: calc(100% - 50px). If an offcanvas opens with a lot of content,
+I want the user to be able to expand the offcanvas using a handle inside the offcanvas header to fit the content. If one drags the handle up, the offcanvas grows to fit the content without exceeding the set max-height. If one drags the handle down by 50px, the offcanvas disappears. How is this implemented?
+*/
