@@ -54,18 +54,9 @@ function toggleNavShowOnMobile() {
     let lastScrollTop = 0
 
     const toggleShow = () => {
-        let currentScroll = window.pageYOffset || document.documentElement.scrollTop
-
-        if (currentScroll > lastScrollTop) {
-            dom.id("header").classList.add("hidden")
-            dom.id("bottomNav").classList.add("hidden")
-            // console.log("Scrolling down...")
-        } else {
-            dom.id("header").classList.remove("hidden")
-            dom.id("bottomNav").classList.remove("hidden")
-            // console.log("Scrolling up...")
-        }
-
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop
+        const scrolledUp = currentScroll > lastScrollTop
+        dom.get(".layout").classList.toggle("layout-nav-hidden", scrolledUp)
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll // For Mobile or negative scrolling
     }
 

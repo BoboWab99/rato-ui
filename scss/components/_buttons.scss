@@ -1,9 +1,20 @@
 // button styles
 
-// buttons with icons
+@use "../abstracts/mixins" as mx;
+
 
 .btn {
 
+    // Floating action button (FAB)
+    &-fab {
+        --bs-btn-padding-x: 0;
+        --bs-btn-padding-y: 0;
+        @include mx.circle(50px);
+        pointer-events: all;
+        box-shadow: 3px 6px 14px rgba(0, 0, 0, .25);
+    }
+
+    // Button with icon & text
     &-icon-text,
     &-text-icon {
         display: -ms-inline-grid;
@@ -42,5 +53,27 @@
 
     &.me-reset {
         margin-right: calc(-1 * var(--bs-btn-padding-x)) !important;
+    }
+}
+
+
+// FAB wrapper
+.fab {
+    &-wrapper {
+        pointer-events: none;
+        text-align: end;
+    }
+
+    &-list {
+        transition: 250ms ease-in-out;
+        padding-inline-end: 1.5rem;
+        padding-block-end: 80px;    // calculate using nav height
+        flex-direction: column;
+        display: inline-flex;
+        gap: .5rem;
+
+        .layout-nav-hidden & {
+            padding-block-end: 1.5rem;
+        }
     }
 }

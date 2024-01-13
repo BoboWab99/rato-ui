@@ -25,18 +25,23 @@
         --main-nav-width: #{var.$main-nav-width-xl};
     }
 
+    // Toggle navs visibility on sm screens
+    // ******************
     .header-primary,
     .nav-bottom-wrapper {
         transition: 400ms ease-in-out;
     }
 
-    .header-primary.hidden {
-        transform: translateY(-72px);
-    }
+    &-nav-hidden {
+        .header-primary {
+            transform: translateY(-110%);
+        }
 
-    .nav-bottom-wrapper.hidden {
-        transform: translateY(72px);
+        .nav-bottom-wrapper {
+            transform: translateY(110%);
+        }
     }
+    // ******************
 
     &-inner {
         min-height: 100vh;
