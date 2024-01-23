@@ -17,6 +17,7 @@ window.addEventListener("resize", () => {
 })
 
 
+// MIGRATE
 // Highlight active order details offcanvas nav items
 dom.all(`[data-cta="odNavItem"]`).forEach(btn => {
     btn.addEventListener("click", () => {
@@ -30,6 +31,7 @@ dom.all(`[data-cta="odNavItem"]`).forEach(btn => {
 })
 
 
+// MIGRATE
 // Show move order options after selection
 dom.all(`[name="selectOrder"]`).forEach(check => {
     check.addEventListener("change", () => {
@@ -40,6 +42,7 @@ dom.all(`[name="selectOrder"]`).forEach(check => {
 })
 
 
+// MIGRATE
 // Add css class when sticky element reaches top
 window.addEventListener("scroll", () => {
     dom.all(".sticky-top").forEach(el => {

@@ -1,20 +1,34 @@
 // Resizable offcanvas
 
+const DRAG_DIST_BEFORE_RESIZE = 100
+
 let offcanvas, startClientY, startHeight, isResizing
 
-const offcanvasEl = () => {
-    return dom.get(".offcanvas-resizable.show")
+const viewportHeightFn = () => {
+    return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 }
 
-const resetOffcanvasStyle = () => {
-    offcanvas.style = ""
+const initializeResizableOffcanvas = (offcanvas) => {
+    const viewportHeight = viewportHeightFn()
+    const elementHeight = offcanvas.offsetHeight
+    const initialHeight = Math.min(elementHeight, 0.5 * viewportHeight)
+    const maxHeight = Math.min(elementHeight, 0.925 * viewportHeight)
+
+    offcanvas.setAttribute("data-initialheight", initialHeight)
+    offcanvas.setAttribute("data-maxheight", maxHeight)
+    offcanvas.style.maxHeight = `${maxHeight}px`
 }
+
+const resetOffcanvasHeight = (offcanvas) => {
+    const initialHeight = offcanvas.getAttribute("data-initialheight")
+    offcanvas.style.setProperty("--bs-offcanvas-height", `${initialHeight}px`)
+}
+
 
 const startResizeFn = (clientY) => {
     isResizing = true
     startClientY = clientY
-    // offcanvas = offcanvasEl()
-    startHeight = parseInt(document.defaultView.getComputedStyle(offcanvas).height, 10)
+    startHeight = offcanvas.offsetHeight
     offcanvas.style.userSelect = "none"
 }
 
@@ -23,33 +37,37 @@ const resizeFn = (clientY) => {
 
     const deltaY = startClientY - clientY
     const newHeight = startHeight + deltaY
-    // offcanvas = offcanvasEl()
 
-    if (deltaY < -50) {
-        console.log(offcanvas.id)
-        dom.get(`[data-bs-dismiss="offcanvas"]`, offcanvas).click()
-        resetOffcanvasStyle()
-        return
-    }
-    if (newHeight < window.innerHeight - 50) {
-        offcanvas.style.cssText += `--bs-offcanvas-height: ${newHeight}px;`
+    const dragDistance = Math.min(DRAG_DIST_BEFORE_RESIZE, 0.333 * offcanvas.offsetHeight)
+    const initialHeight = offcanvas.getAttribute("data-initialheight")
+    const maxHeight = offcanvas.getAttribute("data-maxheight")
+
+    if (deltaY > dragDistance) {
+        offcanvas.style.setProperty("--bs-offcanvas-height", `${maxHeight}px`)
+    } else if (Math.abs(deltaY) > dragDistance) {
+        if (newHeight < initialHeight) {
+            dom.get(`#${offcanvas.id} [data-bs-dismiss="offcanvas"]`).click()
+        } else {
+            offcanvas.style.setProperty("--bs-offcanvas-height", `${initialHeight}px`)
+        }
     }
 }
 
 const endResizeFn = () => {
     if (isResizing) {
-        // offcanvas = offcanvasEl()
         offcanvas.style.userSelect = "auto"
         isResizing = false
     }
 }
 
-// Reset offcanvas style
-dom.all(".offcanvas-resizable").forEach(offcanvas => {
-    offcanvas.addEventListener("hidden.bs.offcanvas", () => {
-        resetOffcanvasStyle()
+
+window.addEventListener("DOMContentLoaded", () => {
+    dom.all(".offcanvas-resizable").forEach(offcanvas => {
+        initializeResizableOffcanvas(offcanvas)
+        resetOffcanvasHeight(offcanvas)
     })
 })
+
 
 // Mouse events
 document.addEventListener("mousedown", (e) => {

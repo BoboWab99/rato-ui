@@ -25,6 +25,7 @@
 
 #offcanvasOrderDetails {
     $nav-height: 65px;
+    --bs-offcanvas-height: 92dvh;
 
     @include bs.media-breakpoint-down(sm) {
         width: 100%;

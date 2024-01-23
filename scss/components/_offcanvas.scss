@@ -16,6 +16,7 @@
             }
 
         .dropdown-item {
+            --bs-dropdown-item-padding-y: .75rem;
             display: grid;
             grid-template-columns: var(--iconw, 2.5rem) 1fr;
             margin-inline: calc(-0.75 * var(--bs-dropdown-item-padding-x));
@@ -23,8 +24,11 @@
     }
 
     &-resizable {
+        --bs-offcanvas-transition: all 300ms ease-in-out;
+
         &.offcanvas-bottom {
-            max-height: 90%;
+            --bs-offcanvas-height: auto;
+            max-height: 92.5%;
         }
 
         .resize-handle {

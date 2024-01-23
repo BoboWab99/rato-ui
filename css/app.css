@@ -12418,12 +12418,17 @@ th {
   padding-block-start: 0;
 }
 .offcanvas-options .dropdown-item {
+  --bs-dropdown-item-padding-y: .75rem;
   display: grid;
   grid-template-columns: var(--iconw, 2.5rem) 1fr;
   margin-inline: calc(-0.75 * var(--bs-dropdown-item-padding-x));
 }
+.offcanvas-resizable {
+  --bs-offcanvas-transition: all 300ms ease-in-out;
+}
 .offcanvas-resizable.offcanvas-bottom {
-  max-height: 90%;
+  --bs-offcanvas-height: auto;
+  max-height: 92.5%;
 }
 .offcanvas-resizable .resize-handle {
   cursor: ns-resize;
@@ -12996,6 +13001,9 @@ inset 0 0 0 1px hsla(0,0%,100%,.15), 0 2px 8px rgba(13,18,22,.15)
   background-color: var(--bs-primary);
 }
 
+#offcanvasOrderDetails {
+  --bs-offcanvas-height: 92dvh;
+}
 @media (max-width: 575.98px) {
   #offcanvasOrderDetails {
     width: 100%;
