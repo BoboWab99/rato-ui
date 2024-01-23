@@ -20,7 +20,7 @@ const initializeResizableOffcanvas = (offcanvas) => {
     offcanvas.style.setProperty("--bs-offcanvas-height", `${initialHeight}px`)
 }
 
-m
+
 const startResizeFn = (clientY) => {
     isResizing = true
     startClientY = clientY
