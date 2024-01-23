@@ -17,14 +17,10 @@ const initializeResizableOffcanvas = (offcanvas) => {
     offcanvas.setAttribute("data-initialheight", initialHeight)
     offcanvas.setAttribute("data-maxheight", maxHeight)
     offcanvas.style.maxHeight = `${maxHeight}px`
-}
-
-const resetOffcanvasHeight = (offcanvas) => {
-    const initialHeight = offcanvas.getAttribute("data-initialheight")
     offcanvas.style.setProperty("--bs-offcanvas-height", `${initialHeight}px`)
 }
 
-
+m
 const startResizeFn = (clientY) => {
     isResizing = true
     startClientY = clientY
@@ -64,7 +60,6 @@ const endResizeFn = () => {
 window.addEventListener("DOMContentLoaded", () => {
     dom.all(".offcanvas-resizable").forEach(offcanvas => {
         initializeResizableOffcanvas(offcanvas)
-        resetOffcanvasHeight(offcanvas)
     })
 })
 
