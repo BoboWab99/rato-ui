@@ -8,23 +8,31 @@ const viewportHeightFn = () => {
     return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 }
 
+const px = (number) => {
+    return `${number}px`
+}
+
+const oh = (offcanvas) => {
+    return offcanvas.offsetHeight
+}
+
 const initializeResizableOffcanvas = (offcanvas) => {
     const viewportHeight = viewportHeightFn()
-    const elementHeight = offcanvas.offsetHeight
+    const elementHeight = oh(offcanvas)
     const initialHeight = Math.min(elementHeight, 0.5 * viewportHeight)
     const maxHeight = Math.min(elementHeight, 0.925 * viewportHeight)
 
     offcanvas.setAttribute("data-initialheight", initialHeight)
     offcanvas.setAttribute("data-maxheight", maxHeight)
-    offcanvas.style.maxHeight = `${maxHeight}px`
-    offcanvas.style.setProperty("--bs-offcanvas-height", `${initialHeight}px`)
+    offcanvas.style.maxHeight = px(maxHeight)
+    offcanvas.style.setProperty("--bs-offcanvas-height", px(initialHeight))
 }
 
 
 const startResizeFn = (clientY) => {
     isResizing = true
     startClientY = clientY
-    startHeight = offcanvas.offsetHeight
+    startHeight = oh(offcanvas)
     offcanvas.style.userSelect = "none"
 }
 
@@ -34,17 +42,17 @@ const resizeFn = (clientY) => {
     const deltaY = startClientY - clientY
     const newHeight = startHeight + deltaY
 
-    const dragDistance = Math.min(DRAG_DIST_BEFORE_RESIZE, 0.333 * offcanvas.offsetHeight)
+    const dragDistance = Math.min(DRAG_DIST_BEFORE_RESIZE, 0.333 * oh(offcanvas))
     const initialHeight = offcanvas.getAttribute("data-initialheight")
     const maxHeight = offcanvas.getAttribute("data-maxheight")
 
     if (deltaY > dragDistance) {
-        offcanvas.style.setProperty("--bs-offcanvas-height", `${maxHeight}px`)
+        offcanvas.style.setProperty("--bs-offcanvas-height", px(maxHeight))
     } else if (Math.abs(deltaY) > dragDistance) {
         if (newHeight < initialHeight) {
             dom.get(`#${offcanvas.id} [data-bs-dismiss="offcanvas"]`).click()
         } else {
-            offcanvas.style.setProperty("--bs-offcanvas-height", `${initialHeight}px`)
+            offcanvas.style.setProperty("--bs-offcanvas-height", px(initialHeight))
         }
     }
 }
