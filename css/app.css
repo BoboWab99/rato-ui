@@ -12414,14 +12414,21 @@ th {
   border-radius: 0.75rem;
   z-index: -1;
 }
+.offcanvas-options {
+  --bs-offcanvas-padding-x: 1rem;
+}
 .offcanvas-options .offcanvas-body {
   padding-block-start: 0;
 }
 .offcanvas-options .dropdown-item {
-  --bs-dropdown-item-padding-y: .75rem;
+  --bs-dropdown-item-padding-y: 1rem;
   display: grid;
   grid-template-columns: var(--iconw, 2.5rem) 1fr;
-  margin-inline: calc(-0.75 * var(--bs-dropdown-item-padding-x));
+  font-size: 1.25em;
+  line-height: 1.2;
+}
+.offcanvas-options .dropdown-item .icon > * {
+  font-size: 1.1em;
 }
 .offcanvas-resizable {
   --bs-offcanvas-transition: all 300ms ease-in-out;

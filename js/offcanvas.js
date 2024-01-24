@@ -68,6 +68,11 @@ const endResizeFn = () => {
 window.addEventListener("DOMContentLoaded", () => {
     dom.all(".offcanvas-resizable").forEach(offcanvas => {
         initializeResizableOffcanvas(offcanvas)
+        
+        offcanvas.addEventListener("hidden.bs.offcanvas", () => {
+            const initialHeight = offcanvas.getAttribute("data-initialheight")
+            offcanvas.style.setProperty("--bs-offcanvas-height", px(initialHeight))
+        })
     })
 })
 
