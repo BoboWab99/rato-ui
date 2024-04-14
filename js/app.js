@@ -57,13 +57,13 @@ window.addEventListener("scroll", () => {
  * when user scrolls up or down
  */
 function toggleNavShowOnMobile() {
-    let lastScrollTop = 0
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop
 
     const toggleShow = () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop
-        const scrolledUp = currentScroll > lastScrollTop
-        dom.get(".layout").classList.toggle("layout-nav-hidden", scrolledUp)
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll // For Mobile or negative scrolling
+        const isScrolled = currentScroll > (lastScrollTop + 70) // 70: header height
+        dom.get(".layout").classList.toggle("layout-nav-hidden", isScrolled)
+        // lastScrollTop = currentScroll <= 0 ? 0 : currentScroll // For Mobile or negative scrolling
     }
 
     const vw = window.innerWidth

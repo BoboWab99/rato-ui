@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RATO Forms</title>
+    <link rel="stylesheet" href="../assets/vendor/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <h1 class="h3">Floating labels</h1>
+        <p class="pb-2">Must have <code>placeholder</code> attribute. By default placeholders are not shown. <br>Add
+            <code>.show-placeholder</code> if you want them to show. <br>If you want the labels to stay stuck up at
+            all times, add <code>.no-floating</code>.
+        </p>
+
+        <form class="row gx-lg-5" action="#" method="get">
+            <div class="col-xl-8">
+                <div class="pb-3">
+                    <div class="form-field-floating">
+                        <input class="form-control" type="text" name="demo" id="demo" placeholder="Demo">
+                        <label class="form-label" for="demo">Demo:</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4"></div>
+
+            <div class="col-lg-6 col-xl-4">
+                <div class="form-field-floating">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected hidden>---</option>
+                        <option value="1">Student</option>
+                        <option value="2">Teacher</option>
+                        <option value="3">Supporting Staff</option>
+                    </select>
+                    <label class="form-label" for="username">User category:</label>
+                </div>
+
+                <div class="form-field-floating-container">
+                    <div class="form-field-floating">
+                        <input class="form-control" type="text" name="username" id="username" placeholder="Username"
+                            value="user1">
+                        <label class="form-label" for="username">Username:</label>
+                    </div>
+                    <span class="help-text">Input with <code>value</code> attribute.</span>
+                </div>
+
+                <div class="form-field-floating-container">
+                    <div class="form-field-floating show-placeholder">
+                        <input class="form-control" type="email" name="email" id="email" placeholder="you@example.com"
+                            value="">
+                        <label class="form-label" for="username">Email:</label>
+                    </div>
+                    <span class="help-text">With <code>.show-placeholder</code> on.</span>
+                </div>
+
+                <div class="form-field-floating-container">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Leave it checked if you agree.
+                        </label>
+                    </div>
+                    <span class="help-text">You might not receive Lorem ipsum, dolor sit amet consectetur
+                        adipisicing elit. Quo tempora officia harum dignissimos quibusdam delectus nisi dolores
+                        accusantium saepe deserunt?</span>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-xl-4">
+                <div class="form-field-floating-container">
+                    <div class="form-field-floating">
+                        <textarea class="form-control" name="description" id="description" cols="30" rows="2"
+                            placeholder="Description"></textarea>
+                        <label class="form-label" for="username">Description:</label>
+                    </div>
+                    <span class="help-text">Default style with <code>textarea</code> elements.</span>
+                </div>
+
+                <div class="form-field-floating-container">
+                    <div class="form-field-floating no-floating">
+                        <input class="form-control" type="password" name="password" id="password"
+                            placeholder="Password">
+                        <label class="form-label" for="username">Password:</label>
+                    </div>
+                    <span class="help-text">With <code>.no-floating</code> on.</span>
+                </div>
+
+                <div class="form-field-floating-container">
+                    <div class="form-field-floating">
+                        <input class="form-control" type="password" name="password" id="password"
+                            placeholder="Password">
+                        <label class="form-label" for="username">Confirm password:</label>
+                    </div>
+                    <span class="help-text">Default.</span>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button type="button" class="btn btn-primary">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

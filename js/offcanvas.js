@@ -42,6 +42,8 @@ const resizeFn = (clientY) => {
     const deltaY = startClientY - clientY
     const newHeight = startHeight + deltaY
 
+    // offcanvas.style.setProperty("--bs-offcanvas-height", px(newHeight))
+
     const dragDistance = Math.min(DRAG_DIST_BEFORE_RESIZE, 0.333 * oh(offcanvas))
     const initialHeight = offcanvas.getAttribute("data-initialheight")
     const maxHeight = offcanvas.getAttribute("data-maxheight")

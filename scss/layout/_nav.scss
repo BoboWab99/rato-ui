@@ -151,9 +151,9 @@
         color: var(--bs-link-hover-color);
     }
 
-    .nav-item-cart .icon>* {
-        font-size: 1.15em;
-    }
+    // .nav-item-cart .icon>* {
+    //     font-size: 1.15em;
+    // }
 
     .nav-link {
         --bs-nav-link-padding-x: .5rem;
@@ -188,6 +188,7 @@
         border-radius: 1.25rem;
         background: linear-gradient(45deg, #8f3985, #ff7e5f);
         box-shadow: 0 0 0 1px #edeaea, 2px 2px 5px #c0396b;
+        position: relative;
 
         .icon {
             color: #fff;

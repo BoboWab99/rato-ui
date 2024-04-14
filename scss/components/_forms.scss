@@ -1,0 +1,80 @@
+// floating labels
+
+@use "../vendors/bootstrap" as bs;
+@use "../abstracts/variables" as var;
+
+
+.form-field-floating {
+    $floating-label-padding-x: 0.25rem;
+    $form-field-margin-bottom: 1.15rem;
+
+    position: relative;
+    margin-bottom: $form-field-margin-bottom;
+
+    .form-field-floating-container & {
+        margin-bottom: 0;
+    }
+
+    &-container {
+        margin-bottom: $form-field-margin-bottom;
+
+        .help-text {
+            margin: 0;
+            display: block;
+            padding-block: .125rem;
+            padding-left: bs.$input-padding-x;
+            font-size: small;
+        }
+
+        .form-check~.help-text {
+            $padding-left: calc(bs.$input-btn-padding-x + var.$default-check-size);
+            padding-left: $padding-left;
+        }
+    }
+
+    label {
+        margin: 0;
+        display: block;
+        padding-block: bs.$input-padding-y;
+        padding-left: bs.$input-padding-x;
+        padding-right: $floating-label-padding-x;
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: bs.$input-line-height;
+        color: var(--bs-gray-600);
+
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-1rem); // tested
+        transition: 200ms ease-in-out;
+        z-index: 2;
+
+        &::after {
+            $left: bs.$input-padding-x - $floating-label-padding-x;
+            content: "";
+            position: absolute;
+            inset: 50% 0 auto $left;
+            background-color: #fff;
+            transform: translateY(-50%);
+            padding: .5rem .25rem; // tested
+            z-index: -1;
+        }
+    }
+
+    &:not(.show-placeholder) .form-control::placeholder {
+        color: transparent;
+    }
+
+    &:not(.no-floating, .show-placeholder) .form-control:placeholder-shown:not(:focus)~label {
+        transform: translateY(0);
+        font-size: bs.$input-font-size;
+        font-weight: bs.$input-font-weight;
+    }
+
+    .form-control:focus~label,
+    .form-select:focus~label {
+        color: #98308c;
+    }
+}

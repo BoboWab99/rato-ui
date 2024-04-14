@@ -16,9 +16,10 @@ $default-center-display: inline-flex;
 
 @mixin square($size, $radius: 0, $center: true, $display: $default-center-display) {
     --size: #{$size};
+    flex: 0 0 auto;
     width: var(--size);
     height: var(--size);
-    flex: 0 0 auto;
+    // background-color: var(--bg);
 
     @if $radius !=0 {
         border-radius: $radius;

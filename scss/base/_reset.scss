@@ -1,6 +1,8 @@
 // reset styles
 @use "sass:map";
 @use "../vendors/bootstrap" as bs;
+@use "../abstracts/variables" as var;
+
 
 html {
     font-size: 15px;
@@ -20,15 +22,14 @@ a:not(.underlined) {
 }
 
 .underlined {
-    --_main: rgba(var(--bs-link-color-rgb), .3);
-        $alt: bs.tint-color(bs.$primary, 60%);
-    text-decoration-color: var(--_main, $alt);
-    text-decoration-thickness: 2px;
+    --color: rgba(var(--bs-link-color-rgb), .8);
+    $alt-color: bs.tint-color(bs.$primary, 20%);
+    text-decoration: var(--color, $alt-color) var(--line, underline) var(--style, dotted) var(--thickness, 1px);
 }
 
-.underlined:not(a) {
-    text-decoration-line: underline;
-}
+// .underlined:not(a) {
+//     text-decoration-line: underline;
+// }
 
 img,
 svg,
@@ -39,9 +40,21 @@ video {
 }
 
 [type="checkbox"] {
-    --check-size: 16px;
-    min-width: var(--check-size);
-    min-height: var(--check-size);
+    width: var(--check-size, var.$default-check-size);
+    height: var(--check-size, var.$default-check-size);
+}
+
+.form-check {
+    $padding-left: calc(bs.$input-padding-x + var.$default-check-size);
+    padding-left: $padding-left;
+
+    & &-input {
+        margin-left: calc(-1 * $padding-left);
+    }
+
+    &~.help-text {
+        padding-left: $padding-left;
+    }
 }
 
 // outline buttons

@@ -14,6 +14,25 @@
         box-shadow: 3px 6px 14px rgba(0, 0, 0, .25);
     }
 
+    // icon only
+    &-icon {
+        $material-icon-fs: 24px;
+        $padding: 8px;
+
+        --bs-btn-padding-x: #{$padding};
+        --bs-btn-padding-y: #{$padding};
+
+        @include mx.circle(2 * $padding + $material-icon-fs);
+        line-height: 1;
+    }
+
+    // primary gradient
+    &-gradient-primary {
+        background: linear-gradient(45deg, #8f3985, #ff7e5f);
+        box-shadow: 0 0 0 1px #edeaea, 1px 1px 3px #c0396b;
+        border: 0;
+    }
+
     // Button with icon & text
     &-icon-text,
     &-text-icon {
@@ -48,11 +67,13 @@
     }
 
     &.ms-reset {
-        margin-left: calc(-1 * var(--bs-btn-padding-x)) !important;
+        --ms: var(--bs-btn-padding-x);
+        margin-left: calc(-1 * var(--ms)) !important;
     }
 
     &.me-reset {
-        margin-right: calc(-1 * var(--bs-btn-padding-x)) !important;
+        --ms: var(--bs-btn-padding-x);
+        margin-right: calc(-1 * var(--ms)) !important;
     }
 }
 
@@ -67,7 +88,7 @@
     &-list {
         transition: 250ms ease-in-out;
         padding-inline-end: 1.5rem;
-        padding-block-end: 80px;    // calculate using nav height
+        padding-block-end: 80px; // calculate using nav height
         flex-direction: column;
         display: inline-flex;
         gap: .5rem;

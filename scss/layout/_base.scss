@@ -58,7 +58,7 @@
 
     &-middle-wrapper {
         flex-grow: 1;
-        min-width: min(100%, 300px);
+        // min-width: min(100%, 300px);
     }
 
     &-middle-inner {
@@ -111,10 +111,10 @@
             grid-template-rows: 60px 1fr;
         }
 
-        &-middle-wrapper {
-            max-width: 480px;
-            flex-grow: 0;
-        }
+        // &-middle-wrapper {
+        //     max-width: 480px;
+        //     flex-grow: 0;
+        // }
     }
 
     @include bs.media-breakpoint-between(sm, lg) {
@@ -173,11 +173,11 @@
             flex-grow: 1;
         }
 
-        &-middle-wrapper {
-            max-width: 576px;
-            min-width: 400px;
-            flex-grow: 0;
-        }
+        // &-middle-wrapper {
+        //     max-width: 576px;
+        //     min-width: 400px;
+        //     flex-grow: 0;
+        // }
 
         &-end-inner,
         &-end {

@@ -61,11 +61,11 @@
 }
 
 .square {
-    @include mx.square(var(--size, 45px));
+    @include mx.square(44px);
 }
 
 .circle {
-    @include mx.circle(var(--size, 45px));
+    @include mx.circle(44px);
 }
 
 .square-profile {
