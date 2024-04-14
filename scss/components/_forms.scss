@@ -27,7 +27,7 @@
         }
 
         .form-check~.help-text {
-            $padding-left: calc(bs.$input-btn-padding-x + var.$default-check-size);
+            $padding-left: calc(bs.$input-padding-x + var.$default-check-size);
             padding-left: $padding-left;
         }
     }
